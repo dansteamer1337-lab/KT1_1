@@ -12,10 +12,8 @@ namespace ConsoleApp4
             int[] array = new int[n];
             Stopwatch sw = Stopwatch.StartNew();
 
-            // Используем разные Random для каждого потока
             Parallel.For(0, n, i =>
             {
-                // Каждый поток создает свой Random
                 Random rnd = new Random(Guid.NewGuid().GetHashCode());
                 array[i] = rnd.Next(-4500, 4500);
             });
