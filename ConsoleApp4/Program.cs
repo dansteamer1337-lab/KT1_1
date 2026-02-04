@@ -33,7 +33,7 @@ namespace ConsoleApp4
 
             Parallel.For(0, count, i =>
             {
-                int localSum;
+                int localSum = 0;
                 int start = i * chunkSize;
                 int end = (i == count-1) ? array.Length : start + chunkSize;
 
@@ -41,6 +41,7 @@ namespace ConsoleApp4
                 {
                     localSum = array[j];
                 }
+                partialSums[i] = localSum;
                  
             });
 
@@ -58,8 +59,9 @@ namespace ConsoleApp4
 
             int n = Convert.ToInt32(Console.ReadLine());
             int[] array = new int[n];
+            array = generateArray(n);
 
-            summary(array, n);
+            Console.WriteLine(summary(array, n));
 
             Console.ReadLine();
         }
